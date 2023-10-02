@@ -1,0 +1,82 @@
+.main {
+    max-width: 1300px;
+    margin: 40px auto;
+    @media (max-width: 1400px) {
+        padding: 30px;
+    }
+}
+
+.container-item {
+    display: grid;
+    grid-gap: 23px;
+    grid-template-columns: repeat(4, 1fr);
+    @media (max-width: 1250px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 998px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 620px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .item {
+        display: flex;
+        position: relative;
+        padding: 20px;
+        width: 100%;
+        height: 300px;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        cursor: pointer;
+        box-shadow:
+            rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+            rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+        .title {
+            font-size: 15px;
+            color: #78ccee;
+            font-weight: bold;
+        }
+        .text-wrap {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            .price {
+                font-size: 14px;
+                color: #bcbcbc;
+            }
+            .amount {
+                color: #77ab72;
+                font-weight: bold;
+
+                font-size: 20px;
+            }
+        }
+        .ID {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+        }
+        .cate {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 10px;
+        }
+    }
+}
+
+.wrap-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px; 
+    position: relative;
+}
