@@ -6,8 +6,6 @@ import { MdOutlineMenu } from "react-icons/md";
 const Menu = () => {
 
     const activeClassName = "nav-active"
-
-
     const [select, setSelect] = useState(false)
     const nav = useRef();
 
@@ -15,9 +13,10 @@ const Menu = () => {
         setSelect(true)
     }
 
+ 
     useEffect(() => {
-        const clickOuteSide = (e) => {
-            if (!nav.current.contains(e.target)) {
+        const clickOuteSide = (event) => {
+            if (event.current !== nav) {
                 setSelect(false)
                 return;
             }
@@ -25,9 +24,12 @@ const Menu = () => {
         document.addEventListener('mousedown', clickOuteSide)
     }, [nav])
 
+
+
+
     return (
         <div className='wrap-menu-icon'>
-            <ul className={select ? "open-nav" : 'null'} ref={nav}>
+            <ul ref={nav} className={select ? "open-nav" : 'null'}       >
                 <NavLink to="/" className={({ isActive }) => isActive ? activeClassName : 'null'}><li>all</li></NavLink>
                 <NavLink to="/jewery" className={({ isActive }) => isActive ? activeClassName : 'null'}><li>jewelery</li></NavLink>
                 <NavLink to="/electric" className={({ isActive }) => isActive ? activeClassName : 'null'}><li>electronics</li></NavLink>

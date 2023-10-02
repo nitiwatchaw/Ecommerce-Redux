@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect , useRef } from 'react'
 import './Nav.scss'
 import { RiShoppingCartFill } from "react-icons/ri";
 import { AiFillHome, AiFillAppstore } from "react-icons/ai";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import enhanceWithClickOutside from 'react-click-outside';
+
 
 const Nav = ({ select, setSelect }) => {
 
