@@ -47,7 +47,7 @@ const CartView = () => {
                     <div className="wrap-title">
                         <Lottie animationData={EmptyCart} />
                         <p>You cart is empty</p>
-                        <NavLink to='/'>
+                        <NavLink to='/products'>
                             <button>Go to Store</button>
                         </NavLink>
 
@@ -141,9 +141,10 @@ const CartView = () => {
                                 <h3>{`£ ${fomaSubtotaltNum} `}</h3>
                             </div>
                             <p>Taxes and shipping calculated at checkout</p>
-                            <button onClick={() => { handleCheckOut() }}>Check out</button>
-
-                            <NavLink to='/'>
+                            <NavLink to='/checkOut'>
+                                <button onClick={() => { handleCheckOut() }}>Check out</button>
+                            </NavLink>
+                            <NavLink to='/products'>
                                 <HiArrowLongLeft className='icon' />  <p> Continue Shopping</p>
                             </NavLink>
 

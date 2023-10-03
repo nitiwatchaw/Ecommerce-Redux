@@ -16,3 +16,26 @@ a{
 a:focus{
   color: unset;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8b89e6;
+  border-radius: 35px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6f6de2;
+}

@@ -30,7 +30,7 @@ const Menu = () => {
     return (
         <div className='wrap-menu-icon'>
             <ul ref={nav} className={select ? "open-nav" : 'null'}       >
-                <NavLink to="/" className={({ isActive }) => isActive ? activeClassName : 'null'}><li>all</li></NavLink>
+                <NavLink to="/products" className={({ isActive }) => isActive ? activeClassName : 'null'}><li>all</li></NavLink>
                 <NavLink to="/jewery" className={({ isActive }) => isActive ? activeClassName : 'null'}><li>jewelery</li></NavLink>
                 <NavLink to="/electric" className={({ isActive }) => isActive ? activeClassName : 'null'}><li>electronics</li></NavLink>
                 <NavLink to="/menItem" className={({ isActive }) => isActive ? activeClassName : 'null'}><li>men's clothing</li></NavLink>

@@ -52,6 +52,23 @@
                     font-size: 16px;
                 }
             }
+            a{
+                text-decoration: none;
+                button{
+                    width: 130px;
+                    height: 40px;
+                    border: 0px;
+                    color: white;
+                    background-color: #8b2828;
+                    border-radius: 7px;
+                   
+                    cursor: pointer;
+                    @media (max-width:650px) {
+                       align-self: center;
+                    }
+                }
+           
+            }
         }
 
         img {

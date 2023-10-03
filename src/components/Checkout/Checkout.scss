@@ -1,0 +1,39 @@
+.container-checkout {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    height: calc(100vh - 290px);
+    @media (max-width: 650px) {
+        height: calc(100vh - 260px);
+    }
+    img {
+        width: 120px;
+    }
+    .wrap-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        h1 {
+            font-size: 1.5rem;
+            color: #9a9a9a;
+            font-weight: lighter;
+        }
+        p {
+            color: #9a9a9a;
+        }
+     
+    }
+    a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+        color: black;
+        p{
+            margin-bottom: 3px;
+        }
+    }
+}

@@ -12,6 +12,7 @@ import MenClothItem from './components/itemPage/menClothItem/MenClothItem'
 import WomenCloth from './components/itemPage/womenCloth/WomenCloth'
 import CartAll from './components/Cart/CartAll/CartAll'
 import CartView from './components/Cart/CartView/CartView'
+import Checkout from './components/Checkout/Checkout'
 import { Route, Routes } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,16 +39,17 @@ function App() {
       />
       <Header />
       <Routes>
-        <Route path='/' element={<Item itemView={itemView} />}> </Route>
+        <Route path='/products' element={<Item itemView={itemView} />}> </Route>
         <Route path='/products/:id' element={<ItemView />}> </Route>
         <Route path='/jewery' element={<JeweryItem itemView={itemView} />}> </Route>
         <Route path='/electric' element={<ElectricItem itemView={itemView} />}> </Route>
         <Route path='/menItem' element={<MenClothItem itemView={itemView} />}> </Route>
         <Route path='/womenItem' element={<WomenCloth itemView={itemView} />}> </Route>
 
-        <Route path='/home' element={<Home />}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path='/cartall' element={<CartAll />}></Route>
         <Route path='/cartView' element={<CartView />}></Route>
+        <Route path='/checkOut' element={<Checkout />}></Route>
       </Routes>
 
 
