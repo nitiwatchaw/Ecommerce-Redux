@@ -5,6 +5,7 @@ import Search from '../../search/Search'
 import Menu from '../../menu/Menu'
 import { NavLink } from 'react-router-dom'
 import { useGetAllItemsShopQuery } from '../../../services/storeShop'
+import Clickoutside from '../../../hook/Clickoutside'
 
 const Item = () => {
     const { data, error, isLoading } = useGetAllItemsShopQuery()
@@ -20,7 +21,9 @@ const Item = () => {
                 <>
                     <div className="wrap-menu">
                         <Search search={search} setSearch={setSearch} />
-                        <Menu />
+                        <Clickoutside>
+                            <Menu />
+                        </Clickoutside>
                     </div>
                     <div className='container-item'>
                         {data.filter(val => val.title.toLowerCase().includes(search)).map((val, i) => {

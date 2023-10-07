@@ -24,7 +24,7 @@ const Nav = ({ select, setSelect }) => {
 
   useEffect(() => {
     const clickOuteSide = (e) => {
-      if (ref && !ref.current.contains(e.target)) {
+      if (ref.current && !ref.current.contains(e.target)) {
         setSelect(false)
         return;
       }

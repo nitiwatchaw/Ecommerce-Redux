@@ -7,6 +7,7 @@ import { removeFromCart, decreaseCart, addToCart, clearCard, getTotals, checkOut
 import Lottie from 'lottie-react';
 import EmptyCart from '../../../asset/animation_ln8d6250.json'
 import Popup from '../../Popup/Popup';
+import Clickoutside from '../../../hook/Clickoutside';
 
 const CartView = () => {
 
@@ -50,7 +51,7 @@ const CartView = () => {
 
     return (
         <div className='main'>
-        
+
             {cart.cartItems.length === 0 ? (
                 <div className="cart-empty">
                     <div className="wrap-title">
@@ -64,7 +65,8 @@ const CartView = () => {
                 </div>
             ) : (
                 <>
-                    <Popup open={popUp} setPopup={setPopup} handleCheckOut={handleCheckOut} />
+                    <Popup open={popUp} setPopup={setPopup} handleCheckOut={handleCheckOut} > </Popup >
+
                     <div className='wrap-item-cart'>
                         <table>
                             <thead>
@@ -152,9 +154,9 @@ const CartView = () => {
                                     <h3>{`£ ${fomaSubtotaltNum} `}</h3>
                                 </div>
                                 <p>Taxes and shipping calculated at checkout</p>
-                             
+
                                 <button onClick={handlePopup}>Check out</button>
-                             
+
                                 <NavLink to='/products'>
                                     <HiArrowLongLeft className='icon' />  <p> Continue Shopping</p>
                                 </NavLink>

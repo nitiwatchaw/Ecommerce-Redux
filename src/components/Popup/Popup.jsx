@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './Popup.scss'
 const Popup = ({ open, setPopup, handleCheckOut }) => {
@@ -9,30 +9,17 @@ const Popup = ({ open, setPopup, handleCheckOut }) => {
     } else {
         document.body.classList.add('active-modal')
     }
-    let ref = useRef();
+
     const checkOut = () => {
         handleCheckOut()
         setPopup(false)
     }
-    useEffect(() => {
 
-        const clickOutside = (e) => {
-            if (ref && !ref.current.contains(e.target)) {
-                setPopup(false)
-            }
-
-        }
-        document.addEventListener("mousedown", clickOutside)
-
-        return () => {
-            document.removeEventListener("mousedown", clickOutside);
-        }
-    })
 
     return (
         <div className='popup'  >
             <div className={`content `} >
-                <div className="wrap-content" ref={ref} >
+                <div className="wrap-content"  >
                     <h1>Confirm Checkout</h1>
                     <p>Do you sure want to check out?</p>
                     <div className="wrap-btn">
