@@ -12,20 +12,20 @@ const Nav = ({ select, setSelect }) => {
   const state = useSelector((state) => state.cart)
 
   const handleClose = () => {
-    setSelect(true)
+    setSelect(false)
   }
 
   const ref = useRef();
   useEffect(() => {
-    if (setSelect === true) {
+    if (setSelect === false) {
       ref.current.classList.toggle('close')
     }
   })
 
   useEffect(() => {
     const clickOuteSide = (e) => {
-      if (ref.current !== e.target) {
-        setSelect(true)
+      if (ref && !ref.current.contains(e.target)) {
+        setSelect(false)
         return;
       }
     }
@@ -34,12 +34,10 @@ const Nav = ({ select, setSelect }) => {
   }, [ref])
 
 
-
-
   return (
     <>
 
-      <div className={`nav-cart ${select ? 'close' : 'null'} `} ref={ref}>
+      <div className={`nav-cart ${!select ? 'close' : 'null'} `} ref={ref}>
         <NavLink to='/' className="home"> <button > <i><AiFillHome /></i> <p>Home</p></button></NavLink>
         <NavLink to='/products' className='product'> <button > <i><AiFillAppstore /></i> <p>Product</p></button></NavLink>
         <NavLink to='/cartall' className='cartApi'> <button > <i><BsFillCartCheckFill /></i> <p>Cart API</p></button></NavLink>

@@ -13,15 +13,16 @@ const Menu = () => {
         setSelect(true)
     }
 
- 
+
     useEffect(() => {
-        const clickOuteSide = (event) => {
-            if (event.current !== nav) {
+        const clickOuteSide = (e) => {
+            if (nav && !nav.current.contains(e.target)) {
                 setSelect(false)
                 return;
             }
         }
         document.addEventListener('mousedown', clickOuteSide)
+        
     }, [nav])
 
 

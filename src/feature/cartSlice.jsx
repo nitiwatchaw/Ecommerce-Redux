@@ -66,10 +66,10 @@ export const cartSlice = createSlice({
             if (state.cartItems.cartQuantity > 1) {
                 state.cartItems.cartQuantity = 0
             }
-                toast.info(`All item remove from cart`, {
-                    position: 'top-right'
-                })
-            
+            toast.info(`All item remove from cart`, {
+                position: 'top-right'
+            })
+
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         },
 
@@ -93,9 +93,9 @@ export const cartSlice = createSlice({
 
         checkOut(state, action) {
             state.cartItems = []
-                toast.success(`Checked out Thankyou!!`, {
-                    position: 'top-center',
-                })
+            toast.success(`Checked out Thankyou!!`, {
+                position: 'top-center',
+            })
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
         }
     },

@@ -6,6 +6,7 @@ import { useGetItemQuery } from '../../../services/storeShop'
 import Loader from '../../loader/Loader'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, getTotals } from '../../../feature/cartSlice'
+
 import { RiShoppingCartFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
 
@@ -18,9 +19,11 @@ const ItemView = () => {
     const [rate, setRate] = useState([])
 
     const cart = useSelector((state) => state.cart)
+
     const dispatch = useDispatch();
-    const addItem = (item) => {
-        dispatch(addToCart(item))
+    const addItem = (e) => {
+        dispatch(addToCart(e))
+
     }
 
     const getData = () => {
@@ -42,9 +45,9 @@ const ItemView = () => {
         dispatch(getTotals())
     }, [cart, dispatch])
 
-
-
-
+    const goback = () => {
+        history.back()
+    }
     return (
         <div>
             {error ? (
@@ -74,7 +77,7 @@ const ItemView = () => {
                             <button className='buttonAdd' onClick={() => { addItem(item) }}>Add to Cart</button>
                         </div>
                     </div>
-                    <NavLink to="/"> <button >Back</button></NavLink>
+                    <button className='back-btn' onClick={goback}>Back</button>
                 </div>
             ) : null}
 

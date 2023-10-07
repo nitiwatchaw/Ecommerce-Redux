@@ -23,8 +23,10 @@
         }
         p {
             color: #9a9a9a;
+            @media (max-width: 567px) {
+                text-align: center;
+            }
         }
-     
     }
     a {
         display: flex;
@@ -32,7 +34,7 @@
         gap: 10px;
         font-size: 20px;
         color: black;
-        p{
+        p {
             margin-bottom: 3px;
         }
     }

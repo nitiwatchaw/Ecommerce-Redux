@@ -10,9 +10,8 @@ const Header = () => {
 
 
     const handleOpen = () => {
-        setSelect(false)
+        setSelect(true)
     }
-
 
     return (
         <>
@@ -21,8 +20,6 @@ const Header = () => {
                 <a onClick={handleOpen}><BiChevronRight /></a>
             </nav>
 
-
-            
                 <Nav className="main"select={select} setSelect={setSelect} />
            
         </>

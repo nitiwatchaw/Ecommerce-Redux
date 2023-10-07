@@ -13,6 +13,7 @@ import WomenCloth from './components/itemPage/womenCloth/WomenCloth'
 import CartAll from './components/Cart/CartAll/CartAll'
 import CartView from './components/Cart/CartView/CartView'
 import Checkout from './components/Checkout/Checkout'
+import Print from './components/Print/Print'
 import { Route, Routes } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -50,6 +51,7 @@ function App() {
         <Route path='/cartall' element={<CartAll />}></Route>
         <Route path='/cartView' element={<CartView />}></Route>
         <Route path='/checkOut' element={<Checkout />}></Route>
+        <Route path='/print' element={<Print />}></Route>
       </Routes>
 
 

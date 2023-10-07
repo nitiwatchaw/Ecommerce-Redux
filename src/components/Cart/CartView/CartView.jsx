@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './CartView.scss'
 import { HiArrowLongLeft } from "react-icons/hi2";
@@ -6,11 +6,19 @@ import { NavLink } from 'react-router-dom';
 import { removeFromCart, decreaseCart, addToCart, clearCard, getTotals, checkOut } from '../../../feature/cartSlice';
 import Lottie from 'lottie-react';
 import EmptyCart from '../../../asset/animation_ln8d6250.json'
+import Popup from '../../Popup/Popup';
 
 const CartView = () => {
 
 
     const cart = useSelector((state) => state.cart)
+    const [popUp, setPopup] = useState(false)
+
+    const handlePopup = () => {
+        setPopup(true)
+    }
+
+
 
     const dispatch = useDispatch()
 
@@ -42,6 +50,7 @@ const CartView = () => {
 
     return (
         <div className='main'>
+        
             {cart.cartItems.length === 0 ? (
                 <div className="cart-empty">
                     <div className="wrap-title">
@@ -54,32 +63,49 @@ const CartView = () => {
                     </div>
                 </div>
             ) : (
-                <div className='wrap-item-cart'>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Product ID</th>
-                                <th>Quantity</th>
-                                <th>Remove</th>
-                                <th>Total</th>
-                                <th >Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cart.cartItems?.map((cartItem, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <td>
-                                            <div className="wrap">
-                                                <img src={cartItem.image} alt={cartItem.title} />
-                                                <div className="text-wrap">
-                                                    <p>{cartItem.title}</p>
-                                                    <p>{cartItem.category}</p>
+                <>
+                    <Popup open={popUp} setPopup={setPopup} handleCheckOut={handleCheckOut} />
+                    <div className='wrap-item-cart'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Product ID</th>
+                                    <th>Quantity</th>
+                                    <th>Remove</th>
+                                    <th>Total</th>
+                                    <th >Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {cart.cartItems?.map((cartItem, i) => {
+                                    return (
+                                        <tr key={i}>
+                                            <td>
+                                                <div className="wrap">
+                                                    <img src={cartItem.image} alt={cartItem.title} />
+                                                    <div className="text-wrap">
+                                                        <p>{cartItem.title}</p>
+                                                        <p>{cartItem.category}</p>
+                                                    </div>
+                                                    <p className='for-mobile'>ID: {cartItem.id}</p>
+                                                    <div className="wrap-button-mobile">
+                                                        <div className="btn-quantity">
+                                                            <button onClick={() => handleDecreaseItem(cartItem)}>-</button>
+                                                            <button>{cartItem.cartQuantity}</button>
+                                                            <button onClick={() => handleIncreaseItem(cartItem)}>+</button>
+                                                        </div>
+                                                        <button className='remove-for-mobile' onClick={() => handleRemoveFromCart(cartItem)}>x</button>
+                                                    </div>
                                                 </div>
-                                                <p className='for-mobile'>ID: {cartItem.id}</p>
-                                                <div className="wrap-button-mobile">
+                                            </td>
+                                            <td className='price'>
+                                                £{cartItem.price}
+                                            </td>
+                                            <td className='product-id'>{cartItem.id}</td>
+                                            <td>
+                                                <div className="wrap-button">
                                                     <div className="btn-quantity">
                                                         <button onClick={() => handleDecreaseItem(cartItem)}>-</button>
                                                         <button>{cartItem.cartQuantity}</button>
@@ -87,70 +113,57 @@ const CartView = () => {
                                                     </div>
                                                     <button className='remove-for-mobile' onClick={() => handleRemoveFromCart(cartItem)}>x</button>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td className='price'>
-                                            £{cartItem.price}
-                                        </td>
-                                        <td className='product-id'>{cartItem.id}</td>
-                                        <td>
-                                            <div className="wrap-button">
-                                                <div className="btn-quantity">
-                                                    <button onClick={() => handleDecreaseItem(cartItem)}>-</button>
-                                                    <button>{cartItem.cartQuantity}</button>
-                                                    <button onClick={() => handleIncreaseItem(cartItem)}>+</button>
+
+                                            </td>
+                                            <td>
+                                                <div className="remove">
+                                                    <button onClick={() => handleRemoveFromCart(cartItem)}>x</button>
                                                 </div>
-                                                <button className='remove-for-mobile' onClick={() => handleRemoveFromCart(cartItem)}>x</button>
-                                            </div>
+                                            </td>
 
-                                        </td>
-                                        <td>
-                                            <div className="remove">
-                                                <button onClick={() => handleRemoveFromCart(cartItem)}>x</button>
-                                            </div>
-                                        </td>
+                                            <td className='price-total'>
+                                                <p className='price'>£ {(Math.round((cartItem.price * cartItem.cartQuantity) * 100) / 100).toFixed(2)}</p>
 
-                                        <td className='price-total'>
-                                            <p className='price'>£ {(Math.round((cartItem.price * cartItem.cartQuantity) * 100) / 100).toFixed(2)}</p>
-
-                                            <div className="price-mobile-wrap">
-                                                <p> {`Price: £${cartItem.price}`}</p>
-                                                <p>{`Total: £${(Math.round((cartItem.price * cartItem.cartQuantity) * 100) / 100).toFixed(2)}`}</p>
-                                            </div>
-                                        </td>
-                                        <td >
-                                            <div className="wrap-button">
-                                                <div className="btn-quantity">
-                                                    <button onClick={() => handleDecreaseItem(cartItem)}>-</button>
-                                                    <button>{cartItem.cartQuantity}</button>
-                                                    <button onClick={() => handleIncreaseItem(cartItem)}>+</button>
+                                                <div className="price-mobile-wrap">
+                                                    <p> {`Price: £${cartItem.price}`}</p>
+                                                    <p>{`Total: £${(Math.round((cartItem.price * cartItem.cartQuantity) * 100) / 100).toFixed(2)}`}</p>
                                                 </div>
-                                                <button className='remove-for-mobile' onClick={() => handleRemoveFromCart(cartItem)}>x</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-                    <div className="summary">
-                        <button onClick={() => deleteAllItem()}>Clear Cart</button>
-                        <div className="wrap-option">
-                            <div className="wrap-text">
-                                <h3>Subtotal</h3>
-                                <h3>{`£ ${fomaSubtotaltNum} `}</h3>
+                                            </td>
+                                            <td >
+                                                <div className="wrap-button">
+                                                    <div className="btn-quantity">
+                                                        <button onClick={() => handleDecreaseItem(cartItem)}>-</button>
+                                                        <button>{cartItem.cartQuantity}</button>
+                                                        <button onClick={() => handleIncreaseItem(cartItem)}>+</button>
+                                                    </div>
+                                                    <button className='remove-for-mobile' onClick={() => handleRemoveFromCart(cartItem)}>x</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                        <div className="summary">
+                            <button onClick={() => deleteAllItem()}>Clear Cart</button>
+                            <div className="wrap-option">
+                                <div className="wrap-text">
+                                    <h3>Subtotal</h3>
+                                    <h3>{`£ ${fomaSubtotaltNum} `}</h3>
+                                </div>
+                                <p>Taxes and shipping calculated at checkout</p>
+                             
+                                <button onClick={handlePopup}>Check out</button>
+                             
+                                <NavLink to='/products'>
+                                    <HiArrowLongLeft className='icon' />  <p> Continue Shopping</p>
+                                </NavLink>
+
                             </div>
-                            <p>Taxes and shipping calculated at checkout</p>
-                            <NavLink to='/checkOut'>
-                                <button onClick={() => { handleCheckOut() }}>Check out</button>
-                            </NavLink>
-                            <NavLink to='/products'>
-                                <HiArrowLongLeft className='icon' />  <p> Continue Shopping</p>
-                            </NavLink>
-
                         </div>
                     </div>
-                </div>
+
+                </>
             )}
         </div>
 

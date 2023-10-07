@@ -5,10 +5,12 @@ import cartReducer from './feature/cartSlice'
 import { getTotals } from './feature/cartSlice'
 
 
+
 export const store = configureStore({
     reducer: {
         [storeShopApi.reducerPath]: storeShopApi.reducer,
         cart: cartReducer,
+    
     },
 
     middleware: (getDefaultMiddleware) =>
