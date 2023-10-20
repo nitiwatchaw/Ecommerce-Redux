@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Checkout.scss'
 import { NavLink } from 'react-router-dom'
+import { clearCardPrint } from '../../feature/printSlice'
 import thank from '../../asset/check.png'
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { getTotals } from '../../feature/cartSlice';
@@ -11,10 +12,16 @@ const Checkout = () => {
     const cart = useSelector((state) => state.cart)
 
     const dispatch = useDispatch()
+    const dispatchClear = useDispatch()
+
 
     useEffect(() => {
         dispatch(getTotals())
+  
+
     }, [cart, dispatch])
+
+
 
     return (
         <div className='main'>
@@ -24,9 +31,17 @@ const Checkout = () => {
                     <h1>Thanks for reaching out!</h1>
                     <p>This is a fake store that I'm create for practice the redux libraby</p>
                 </div>
-                <NavLink to='/'>
-                    <HiOutlineArrowNarrowLeft />    <p>Go to Home</p>
-                </NavLink>
+                <div className="wrap-btn">
+                    <NavLink to='/'>
+                        <button className='home-btn' onClick={() => { dispatchClear(clearCardPrint()) }}>
+                            <HiOutlineArrowNarrowLeft />    <p>Go to Home</p>
+                        </button>
+
+                    </NavLink>
+                    <NavLink to='/print'>
+                        <button className='print-btn'>Print</button>
+                    </NavLink>
+                </div>
             </div>
         </div>
     )

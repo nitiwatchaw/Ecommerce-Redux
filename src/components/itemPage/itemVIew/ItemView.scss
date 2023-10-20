@@ -1,16 +1,18 @@
 .view-section {
-    margin-bottom: 40px;
+
+
     @media (max-width: 1250px) {
         padding: 0px 15px;
     }
     .container-itemview {
         max-width: 1200px;
-        margin: 60px auto 0 auto;
+        margin: 60px auto;
         background-color: white;
         position: relative;
         padding: 30px;
         display: flex;
         gap: 20px;
+        
         flex-direction: column;
         img {
             width: 100%;

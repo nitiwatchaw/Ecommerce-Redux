@@ -38,11 +38,11 @@ const Nav = ({ select, setSelect }) => {
     <>
 
       <div className={`nav-cart ${!select ? 'close' : 'null'} `} ref={ref}>
-        <NavLink to='/' className="home"> <button > <i><AiFillHome /></i> <p>Home</p></button></NavLink>
-        <NavLink to='/products' className='product'> <button > <i><AiFillAppstore /></i> <p>Product</p></button></NavLink>
-        <NavLink to='/cartall' className='cartApi'> <button > <i><BsFillCartCheckFill /></i> <p>Cart API</p></button></NavLink>
-        <NavLink to='/cartView' className='cart'><button > <i><RiShoppingCartFill /></i> <p>Cart ({state.cartTotalQuantity})</p></button></NavLink>
-        <button onClick={handleClose} className="close-btn" >x</button>
+        <NavLink to='/' className="home "> <button > <i><AiFillHome /></i> <p>Home</p></button></NavLink>
+        <NavLink to='/products' className='product '> <button > <i><AiFillAppstore /></i> <p>Product</p></button></NavLink>
+        <NavLink to='/cartall' className='cartApi '> <button > <i><BsFillCartCheckFill /></i> <p>Cart API</p></button></NavLink>
+        <NavLink to='/cartView' className='cart '><button > <i><RiShoppingCartFill /></i> <p>Cart ({state.cartTotalQuantity})</p></button></NavLink>
+        <button onClick={handleClose} className="close-btn " >x</button>
       </div>
 
     </>

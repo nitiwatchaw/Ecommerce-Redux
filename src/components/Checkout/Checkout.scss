@@ -4,10 +4,8 @@
     flex-direction: column;
     justify-content: center;
     gap: 40px;
-    height: calc(100vh - 290px);
-    @media (max-width: 650px) {
-        height: calc(100vh - 260px);
-    }
+    height: calc(100vh - 140px);
+
     img {
         width: 120px;
     }
@@ -28,14 +26,30 @@
             }
         }
     }
-    a {
+    .wrap-btn {
         display: flex;
+        flex-direction: column-reverse;
         align-items: center;
-        gap: 10px;
-        font-size: 20px;
-        color: black;
-        p {
-            margin-bottom: 3px;
+        gap: 20px;
+        justify-content: center;
+        .home-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            color: black;
+            border: 0px;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .print-btn {
+            width: 100px;
+            height: 38px;
+            background-color: #f97e7e;
+            color: white;
+            border: 0px;
+            border-radius: 5px;
+            cursor: pointer;
         }
     }
 }

@@ -1,14 +1,16 @@
 import React from 'react'
 import './Home.scss'
+import Header from '../../Header/Header'
 import { NavLink } from 'react-router-dom'
 import img from '../../asset/shop.png'
 const Home = () => {
     return (
         <div>
+            <Header />
             <div className='bg'>
             </div>
 
-            <div className="container-home main">
+           
                 <div className="wrap-container">
                     <div className="wrap-text">
                         <h1>MY FAKE STORE <br /> FROM API</h1>
@@ -17,7 +19,7 @@ const Home = () => {
                     </div>
                     <img src={img} alt='img-home' />
                 </div>
-            </div>
+           
         </div>
     )
 }

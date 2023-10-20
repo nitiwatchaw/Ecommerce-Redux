@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './JeweryItem.scss'
 import Loader from '../../loader/Loader'
+import Header from '../../../Header/Header'
 import Search from '../../search/Search'
 import Menu from '../../menu/Menu'
 import { NavLink } from 'react-router-dom'
@@ -10,7 +11,8 @@ const JeweryItem = () => {
 
     const [search, setSearch] = useState("");
 
-    return (
+    return (<>
+        <Header />
         <div className='main'>
 
             {error ? (
@@ -52,6 +54,7 @@ const JeweryItem = () => {
             ) : null}
 
         </div>
+    </>
     )
 }
 

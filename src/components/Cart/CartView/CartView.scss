@@ -8,6 +8,9 @@
     position: relative;
     width: 100%;
     height: calc(100vh - 290px);
+    @media (max-width:650px) {
+        height: calc(100vh - 260px);
+    }
     .wrap-title {
         position: absolute;
         top: 50%;
@@ -39,7 +42,7 @@
     }
 }
 
-table {
+.table-cart {
     border-collapse: collapse;
     width: 100%;
 

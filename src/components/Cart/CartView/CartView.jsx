@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './CartView.scss'
 import { HiArrowLongLeft } from "react-icons/hi2";
+import Header from '../../../Header/Header';
 import { NavLink } from 'react-router-dom';
 import { removeFromCart, decreaseCart, addToCart, clearCard, getTotals, checkOut } from '../../../feature/cartSlice';
+import { addPrintItem, clearCardPrint, removePrintFromCart, decreasePrintCartItem } from '../../../feature/printSlice';
 import Lottie from 'lottie-react';
 import EmptyCart from '../../../asset/animation_ln8d6250.json'
 import Popup from '../../Popup/Popup';
-import Clickoutside from '../../../hook/Clickoutside';
+
 
 const CartView = () => {
 
@@ -17,24 +19,28 @@ const CartView = () => {
 
     const handlePopup = () => {
         setPopup(true)
-    }
 
+    }
 
 
     const dispatch = useDispatch()
 
     const handleRemoveFromCart = (cartItem) => {
         dispatch(removeFromCart(cartItem))
+        dispatch(removePrintFromCart(cartItem))
     }
     const handleDecreaseItem = (cartItem) => {
         dispatch(decreaseCart(cartItem))
+        dispatch(decreasePrintCartItem(cartItem))
     }
     const handleIncreaseItem = (cartItem) => {
         dispatch(addToCart(cartItem))
+        dispatch(addPrintItem(cartItem))
     }
 
     const deleteAllItem = () => {
         dispatch(clearCard())
+        dispatch(clearCardPrint())
     }
 
     const handleCheckOut = () => {
@@ -43,13 +49,15 @@ const CartView = () => {
 
     useEffect(() => {
         dispatch(getTotals())
+
     }, [cart, dispatch])
+
 
 
     const fomaSubtotaltNum = (Math.round(cart.cartTotalAmount * 100) / 100).toFixed(2);
 
-
-    return (
+    return (<>
+        <Header />
         <div className='main'>
 
             {cart.cartItems.length === 0 ? (
@@ -68,7 +76,7 @@ const CartView = () => {
                     <Popup open={popUp} setPopup={setPopup} handleCheckOut={handleCheckOut} > </Popup >
 
                     <div className='wrap-item-cart'>
-                        <table>
+                        <table className='table-cart'>
                             <thead>
                                 <tr>
                                     <th>Description</th>
@@ -155,7 +163,7 @@ const CartView = () => {
                                 </div>
                                 <p>Taxes and shipping calculated at checkout</p>
 
-                                <button onClick={handlePopup}>Check out</button>
+                                <button onClick={() => handlePopup()}>Check out</button>
 
                                 <NavLink to='/products'>
                                     <HiArrowLongLeft className='icon' />  <p> Continue Shopping</p>
@@ -168,7 +176,7 @@ const CartView = () => {
                 </>
             )}
         </div>
-
+    </>
     )
 }
 

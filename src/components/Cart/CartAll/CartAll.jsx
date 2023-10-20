@@ -1,5 +1,6 @@
 import React from 'react'
 import './CartAll.scss'
+import Header from '../../../Header/Header'
 import Loader from '../../loader/Loader'
 import { useGetAllCartQuery } from '../../../services/storeShop'
 
@@ -10,7 +11,7 @@ const CartAll = () => {
     return (
 
         <div>
-
+            <Header />
             {error ? (
                 <>Oh no, there was an error</>
             ) : isLoading ? (
@@ -19,7 +20,7 @@ const CartAll = () => {
                 <>
                     <div className='main'>
 
-                 
+
                         <div className="cart-container">
                             {data.map((val, i) => {
                                 return (

@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import './MenClothItem.scss'
 import Loader from '../../loader/Loader'
+import Header from '../../../Header/Header'
 import Search from '../../search/Search'
 import Menu from '../../menu/Menu'
 import { NavLink } from 'react-router-dom'
 import { useGetMenClothQuery } from '../../../services/storeShop'
+
 const MenClothItem = () => {
     const { data, error, isLoading } = useGetMenClothQuery()
 
     const [search, setSearch] = useState("");
 
-    return (
+    return (<>
+        <Header />
         <div className='main'>
 
             {error ? (
@@ -51,6 +54,7 @@ const MenClothItem = () => {
             ) : null}
 
         </div>
+    </>
     )
 }
 

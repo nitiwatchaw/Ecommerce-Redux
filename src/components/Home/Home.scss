@@ -2,43 +2,41 @@
     background-image: url(../../asset/abstract-surface-textures-white-concrete-stone-wall.jpg);
     background-position: bottom right;
     width: 100%;
-    height: 950px;
+    height: calc(100vh - 0px);
     background-size: cover;
     z-index: -100;
     position: absolute;
     top: 0;
 }
 
-.container-home {
-    height: 700px;
-    @media (max-width:650px) {
-        height: 750px;
-    }
     .wrap-container {
         gap: 30px;
         display: flex;
+        height: calc(100vh - 210px);
+        max-width: 1300px;
+        margin: 0 auto;
         align-items: center;
-        @media (max-width:998px) {
-         margin-top: 90px;
+        @media (max-width: 650px) {
+            height: calc(100vh - 120px);
         }
         .wrap-text {
             display: flex;
             flex-direction: column;
             gap: 40px;
-            color:#1c1c2c ;
-            @media (max-width:650px) {
+            color: #1c1c2c;
+            @media (max-width: 650px) {
                 text-align: center;
             }
             h1 {
                 font-size: 80px;
                 margin: 0;
                 line-height: 90px;
-           
-                @media (max-width:1220px) {
+
+                @media (max-width: 1220px) {
                     font-size: 60px;
                     line-height: 70px;
                 }
-                @media (max-width:998px) {
+                @media (max-width: 998px) {
                     font-size: 40px;
                     line-height: 50px;
                 }
@@ -47,53 +45,57 @@
             p {
                 margin: 0;
                 font-size: 20px;
-              
-                @media (max-width:998px) {
+
+                @media (max-width: 998px) {
                     font-size: 16px;
                 }
             }
-            a{
+            a {
                 text-decoration: none;
-                button{
+                button {
                     width: 130px;
                     height: 40px;
                     border: 0px;
                     color: white;
                     background-color: #8b2828;
                     border-radius: 7px;
-                   
+
                     cursor: pointer;
-                    @media (max-width:650px) {
-                       align-self: center;
+                    @media (max-width: 650px) {
+                        align-self: center;
                     }
                 }
-           
             }
         }
 
         img {
-            width: 600px;
-            height: 100%;
-            transition-duration: .3s;
-            object-fit: contain;
-            animation: mover .8s infinite alternate;
+            width: 40%;
+            transition-duration: 0.3s;
+            object-fit: cover;
+            animation: mover 0.8s infinite alternate;
             @keyframes mover {
-                0% { transform: translateY(0); }
-                100% { transform: translateY(-15px); }
+                0% {
+                    transform: translateY(0);
+                }
+                100% {
+                    transform: translateY(-15px);
+                }
             }
-            @media (max-width:1220px) {
-                width: 480px;
+            @media (max-width: 1220px) {
+                width: 40%;
             }
-            @media (max-width:998px) {
-                width: 320px;
+            @media (max-width: 998px) {
+                width: 40%;
             }
-            @media (max-width:650px) {
+            @media (max-width: 650px) {
                 display: none;
             }
-            &:hover{
+            &:hover {
                 scale: (1.15);
+                @media (max-width: 1200px) {
+                    scale: (1);
+                }
             }
         }
     }
-}
 

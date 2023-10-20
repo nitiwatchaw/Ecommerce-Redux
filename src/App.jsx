@@ -38,7 +38,7 @@ function App() {
         pauseOnHover={false}
         theme="light"
       />
-      <Header />
+  
       <Routes>
         <Route path='/products' element={<Item itemView={itemView} />}> </Route>
         <Route path='/products/:id' element={<ItemView />}> </Route>

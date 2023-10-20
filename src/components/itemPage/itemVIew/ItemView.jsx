@@ -3,10 +3,11 @@ import './ItemView.scss'
 import Axios from 'axios'
 import { NavLink, useParams } from 'react-router-dom'
 import { useGetItemQuery } from '../../../services/storeShop'
+import Header from '../../../Header/Header'
 import Loader from '../../loader/Loader'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, getTotals } from '../../../feature/cartSlice'
-
+import { addPrintItem } from '../../../feature/printSlice'
 import { RiShoppingCartFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
 
@@ -23,7 +24,7 @@ const ItemView = () => {
     const dispatch = useDispatch();
     const addItem = (e) => {
         dispatch(addToCart(e))
-
+        dispatch(addPrintItem(e))
     }
 
     const getData = () => {
@@ -48,7 +49,8 @@ const ItemView = () => {
     const goback = () => {
         history.back()
     }
-    return (
+    return (<>
+        <Header />
         <div>
             {error ? (
                 <>Oh no, there was an errFor</>
@@ -84,6 +86,7 @@ const ItemView = () => {
 
 
         </div>
+    </>
     )
 }
 

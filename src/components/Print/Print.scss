@@ -1,0 +1,97 @@
+.printSection {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    height: calc(100vh - 60px);
+    .container-print {
+        padding: 30px;
+        width: 100%;
+        background-color: white;
+    
+        max-width: 1300px;
+        border: 1px solid rgb(218, 218, 218);
+        .print-table {
+            border-collapse: collapse;
+            width: 100%;
+            thead {
+                text-align: center;
+                height: 80px;
+    
+                tr {
+                    border-bottom: 1px solid black !important;
+                }
+            }
+            tbody {
+                border-bottom: 1px solid black !important;
+                tr {
+                    height: 70px;
+    
+                    td {
+                        &:first-child {
+                            width: 50%;
+                        }
+                        &:not(:first-child) {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+        .wrap-total {
+            position: relative;
+            width: 100%;
+            justify-content: flex-end;
+            padding: 20px 0px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            border-bottom: 1px solid black;
+            .wrap-text {
+                display: flex;
+                gap: 10px;
+    
+                p {
+                    &:first-child {
+                        font-weight: bold;
+                    }
+                }
+            }
+            .date {
+                position: absolute;
+                left: 0px;
+            }
+        }
+        .wrap-button {
+            margin-top: 30px;
+            display: flex;
+            gap: 40px;
+            button {
+                &:nth-child(1) {
+                    cursor: pointer;
+                    width: 100px;
+                    height: 40px;
+                    border: 0px;
+                    color: white;
+                    font-size: 14px;
+                    border-radius: 5px;
+                    background-color: #cdcacd;
+                }
+                &:nth-child(2) {
+                    cursor: pointer;
+                    width: 100px;
+                    height: 40px;
+                    border: 0px;
+    
+                    color: white;
+                    font-size: 14px;
+                    border-radius: 5px;
+                    background-color: #ec54ec;
+                }
+                &:hover {
+                    filter: brightness(90%);
+                }
+            }
+        }
+    }
+}
+

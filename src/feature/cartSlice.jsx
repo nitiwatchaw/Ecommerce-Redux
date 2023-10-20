@@ -11,13 +11,14 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
-            const itemIndex = state.cartItems.findIndex((item) => item.id === action.payload.id)
+            const itemIndex = state.cartItems.findIndex((e) => e.id === action.payload.id)
             if (itemIndex >= 0) {
                 state.cartItems[itemIndex].cartQuantity += 1
                 toast.success('increased product quantity', {
                     position: 'top-right'
                 })
-            } else {
+            }
+            else {
                 const tempItem = { ...action.payload, cartQuantity: 1 }
                 state.cartItems.push(tempItem);
                 toast.success('added a new product to cart', {
@@ -25,7 +26,6 @@ export const cartSlice = createSlice({
                 })
             }
             localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
-
         },
 
         removeFromCart(state, action) {

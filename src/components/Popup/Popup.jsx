@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './Popup.scss'
+
 const Popup = ({ open, setPopup, handleCheckOut }) => {
 
     if (!open) {
@@ -13,6 +14,9 @@ const Popup = ({ open, setPopup, handleCheckOut }) => {
     const checkOut = () => {
         handleCheckOut()
         setPopup(false)
+        document.body.classList.remove('active-modal')
+
+
     }
 
 

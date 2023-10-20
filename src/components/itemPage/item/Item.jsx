@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Item.scss'
 import Loader from '../../loader/Loader'
+import Header from '../../../Header/Header'
 import Search from '../../search/Search'
 import Menu from '../../menu/Menu'
 import { NavLink } from 'react-router-dom'
@@ -11,14 +12,17 @@ const Item = () => {
     const { data, error, isLoading } = useGetAllItemsShopQuery()
     const [search, setSearch] = useState("");
 
-    return (
+    return (<>
+        <Header />
         <div className='main'>
+            
             {error ? (
                 <>Oh no, there was an error</>
             ) : isLoading ? (
                 <Loader />
             ) : data ? (
                 <>
+                
                     <div className="wrap-menu">
                         <Search search={search} setSearch={setSearch} />
                         <Clickoutside>
@@ -52,6 +56,7 @@ const Item = () => {
             ) : null}
 
         </div>
+        </>
     )
 }
 
