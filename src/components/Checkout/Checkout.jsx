@@ -17,10 +17,12 @@ const Checkout = () => {
 
     useEffect(() => {
         dispatch(getTotals())
-  
+
 
     }, [cart, dispatch])
-
+    window.addEventListener('popstate', () => {
+        dispatchClear(clearCardPrint())
+    });
 
 
     return (

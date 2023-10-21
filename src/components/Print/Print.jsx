@@ -18,7 +18,7 @@ const Print = () => {
 
     const Print = useSelector((state) => state.print)
     const dispatch = useDispatch()
-
+    const dispatchClear = useDispatch()
 
     useEffect(() => {
         dispatch(getTotalsPrint())
@@ -28,12 +28,16 @@ const Print = () => {
     const fomaSubtotaltNum = (Math.round(Print.cartPrintTotalAmount * 100) / 100).toFixed(2);
 
 
-
+    window.addEventListener('popstate', () => {
+        dispatchClear(clearCardPrint())
+    });
 
 
     return (
         <div className="printSection">
+
             <div className='container-print'>
+                <h3>Summary</h3>
                 <table className='print-table'>
                     <thead>
                         <tr>

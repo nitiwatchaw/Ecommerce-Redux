@@ -3,20 +3,29 @@
     display: grid;
     place-items: center;
     height: calc(100vh - 60px);
+    overflow-x: auto;
     .container-print {
         padding: 30px;
         width: 100%;
         background-color: white;
-    
+        display: flex;
+        flex-direction: column;
         max-width: 1300px;
+
         border: 1px solid rgb(218, 218, 218);
+        h3 {
+            background-color: transparent;
+            text-align: center;
+        }
         .print-table {
             border-collapse: collapse;
             width: 100%;
+          
+            min-width: 700px;
             thead {
                 text-align: center;
                 height: 80px;
-    
+
                 tr {
                     border-bottom: 1px solid black !important;
                 }
@@ -25,10 +34,13 @@
                 border-bottom: 1px solid black !important;
                 tr {
                     height: 70px;
-    
+
                     td {
                         &:first-child {
                             width: 50%;
+                            @media (max-width: 700px) {
+                                width: auto;
+                            }
                         }
                         &:not(:first-child) {
                             text-align: center;
@@ -49,7 +61,7 @@
             .wrap-text {
                 display: flex;
                 gap: 10px;
-    
+
                 p {
                     &:first-child {
                         font-weight: bold;
@@ -81,7 +93,7 @@
                     width: 100px;
                     height: 40px;
                     border: 0px;
-    
+
                     color: white;
                     font-size: 14px;
                     border-radius: 5px;
@@ -94,4 +106,3 @@
         }
     }
 }
-
